@@ -1,48 +1,109 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Julia's Portfolio</title>
-    <!-- link this html file to the css file -->
-    <link rel="stylesheet" href="style.css">
+  <meta charset="UTF-8" />
+  <!-- make sure the page is responsive on different screens -->
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <!-- browser title -->
+  <title>Julia's Portfolio</title>
+  <!-- link the css file to the html file -->
+  <link rel="stylesheet" href="style.css" />
 </head>
 
+<!-- contains all elements for page's header -->
 <body>
-<!-- logo -->  
-<div id="header">
-    <div class="container">
-        <nav>
-            <!--<img src="images/kisspng-apple-color-emoji-human-skin-color-light-skin-woma-1713874204848.webp">-->
-            <img src="kisspng-apple-color-emoji-human-skin-color-light-skin-woma-1713874204848_processed.webp">
-            <ul>
-                <!-- list of tabs-->
-                <li><a href="#">Home</a></li>
-                <li><a href="#">About</a></li>
-                <li><a href="#">Projects</a></li>
-                <li><a href="#">Aspirations</a></li>
-                <li><a href="#">Contact</a></li>
-            </ul>
-        </nav>
-        <!--Adding bio in top left-->
-        <div class="header-text">
-            <p>Software Development Analyst</p>
-            <h1>Hi, I'm <span>Julia</span><br>Williams from San Diego</h1>
-        </div>
-    </div>
-</div>
-
-
-<!-- About page -->
-<div id = "about">
-    <div class="container">
-        <div class="row">
-            <div class="about-col-1"></div>
-            <div class="about-col-2"></div>
-        </div>
-    </div>
-</div>
+  <div id="header">
+    <!-- navigation Bar (top center) -->
+    <nav>
+      <ul>
+        <li><a href="#">Home</a></li>
+        <li><a href="#">About</a></li>
+        <li><a href="#">Projects</a></li>
+        <li><a href="#">Aspirations</a></li>
+        <li><a href="#">Contact</a></li>
+      </ul>
+    </nav>
     
+    <!-- message (middle left) -->
+    <div class="header-text">
+      <p>Software Developer</p>
+      <!--<h1>Hi, I'm <span>Julia</span><br>Williams</h1>-->
+      <h1>Hi, I'm <span id="typing-text"></span></h1>
+    </div>
+    
+    <!-- logo (middle right) -->
+    <div class="logo">
+      <img src="kisspng-apple-color-emoji-human-skin-color-light-skin-woma-1713874204848_processed.webp" alt="Logo" />
+    </div>
+  </div>
+
+  <!-- about page (kept as is) -->
+  <div id="about">
+    <div class="container">
+      <div class="row">
+        <div class="about-col-1">
+            <!--come back!-->
+            <img src="images/IMG_7069.png"/>
+        </div>
+        <div class="about-col-2">
+            <h1 class="sub-title">About Me</h1>
+            <p>I am a back-end software developer with a passion for data science.</p>
+            <div class="tab-titles">
+                <p class="tab-links active-link" onclick="opentab('skills')">Skills</p>
+                <p class="tab-links" onclick="opentab('experience')">Experience</p>
+                <p class="tab-links" onclick="opentab('education')">Education</p>
+            </div>
+            <div class="tab-contents active-tab" id = "skills">
+                <ul><li><span>Software</span><br>Development</li></ul>
+                <ul><li><span>Data</span><br>Analytics</li></ul>
+                <ul><li><span>Cloud</span><br>Computing</li></ul>
+            </div>
+            <div class="tab-contents" id="experience" >
+                <ul><li><span>2022-Current</span><br>Software Development Systems Analyst - Accenture</li></ul>
+                <ul><li><span>2023-Current</span><br>Lead Python Developer and PM - Team Innovation @ Accenture </li></ul>
+                <ul><li><span>2020-2021</span><br>Software Engineering Internship - ZSquare Solutions Inc.</li></ul>
+            </div>
+            <div class="tab-contents" id = "education">
+                <ul><li><span>2021</span><br>BS Computer Science and Mathematics U. New Hampshire</li></ul>
+            </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- javascript-->
+  <script>
+    /* main page */
+  document.addEventListener("DOMContentLoaded", function () {
+    const text = "Julia Williams"; // The text you want to type out
+    const speed = 200; // Typing speed in milliseconds
+    let i = 0;
+
+    function typeWriter() {
+      if (i < text.length) {
+        document.getElementById("typing-text").innerHTML += text.charAt(i);
+        i++;
+        setTimeout(typeWriter, speed);
+      }
+    }
+    
+    typeWriter(); // Start the typing effect
+  });
+
+    /* about me page */
+    var tablinks = document.getElementsByClassName("tab-links");
+    var tabcontents = document.getElementsByClassName("tab-contents");
+
+    function opentab(tabname){
+        for(tablink of tablinks){
+            tablink.classList.remove("active-link");
+        }
+        for(tabcontent of tabcontents){
+            tabcontent.classList.remove("active-tab");
+        }
+        event.currentTarget.classList.add("active-link");
+        document.getElementById(tabname).classList.add("active-tab");
+    }
+  </script>
 </body>
 </html>
