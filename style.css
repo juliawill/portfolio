@@ -1,12 +1,12 @@
 * {
     margin: 0;
     padding: 0;
-    font-family: 'Roboto', monospace;
+    font-family:'Roboto', monospace;
     box-sizing: border-box;
   }
   
   body {
-    background: #111111;
+    background: #1c1b1b;
     /*background: linear-gradient(to bottom, #0a0a0a, #120416);*/
     background-attachment: fixed;
     color: #fff;
@@ -171,6 +171,7 @@
     flex-direction: column;
     justify-content: flex-start;
     font-size: 14px;
+    padding-right: 20px;
 }
 
 .sub-title {
@@ -229,6 +230,8 @@
 /* --- services --- */
 #services{
     padding: 30px 0;
+    padding-left: 50px;
+    padding-right: 50px;
 
 }
 
@@ -238,12 +241,11 @@
     gap: 40px;
     margin-top: 50px;
     width: 100%;
-    
-
 
 }
 
 .services-list div {
+    padding: 50px;
     background: #262626;
     padding: 40px;
     font-size: 13px;
@@ -253,13 +255,13 @@
 }
 
 .services-list div i {
-    font-size: 50px;
     margin-bottom: 30px;
 }
 .services-list div h2{
     font-size: 25px;
     font-weight: 500;
     margin-bottom: 15px;
+    
 }
 
 .services-list div a {
@@ -275,9 +277,138 @@
     transform: translateY(-10px);
 }
 
-/* portofolio section */
+/* portofolio (project) section */
 
 #portfolio {
+   padding: 50px 0; 
+   padding-left: 50px;
+   padding-right: 50px;
+}
+
+.container {
+   /* Optional: You can set a max-width to limit the width */
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start; /* This keeps the header aligned to the left */
+
+}
+
+.sub-title {
+    font-size: 50px;
+    font-weight: 600;
+    color: #fff;
+    margin-bottom: 20px; /* Adjust space between the header and images */
+}
 
 
+.project-list{
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 40px;
+    margin-top: 50px;
+    display: flex;
+}
+
+.project{
+    border-radius: 10px;
+    position: relative;
+    overflow: hidden;
+    justify-content: center;
+    align-items: center;
+    
+
+}
+
+.project img {
+    width: 425px;
+    border-radius: 10px;
+    display: block;
+    object-fit: cover;
+    height: 400px;
+    transition: transform 0.5s;
+}
+
+/* gradiant over project boxes */
+.layer {
+  width: 100%;
+  height: 0;
+  background: linear-gradient(rgba(0,0,0,0.6), #16ecb3);
+  position: absolute;
+  border-radius: 10px;
+  left: 0;
+  bottom: 0;
+  overflow: hidden;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  padding: 0 40px;
+  text-align: center;
+  font-size: 14px;
+  transition: height 0.5s;
+
+}
+
+.layer h3 {
+  font-weight: 600;
+  margin-bottom: 20px;
+
+
+}
+
+/*links*/
+.layer a{
+  margin-top: 20px;
+  color: #16ecb3;
+  text-decoration: none;
+  font-size: 18px;
+  line-height: 60px;
+  background: #fff;
+  width: 60px;
+  height: 60px;
+  border-radius: 50%;
+  text-align: center;
+
+}
+
+.project:hover img{
+  transform: scale(1.1);
+
+
+}
+
+.project:hover .layer {
+  height: 100%;
+}
+
+.button {
+  display: block;
+  margin: 50px auto;
+  width: fit-content;
+  border: 1px solid #16ecb3;
+  padding: 14px 50px;
+  border-radius: 6px;
+  text-decoration: none;
+  color: white;
+}
+
+.button:hover {
+  background: #16ecb3;
+
+}
+
+/*---contact---*/
+
+.contact-left{
+  flex-basis: 35%;
+  /*padding-left: 50px;*/
+}
+.contact-right{
+  flex-basis: 60%;
+  
+}
+
+.contact-left p{
+  margin-top: 30px;
 }
