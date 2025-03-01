@@ -22,6 +22,17 @@
     background-position: center;
     */
   }
+
+  #fibonacciCanvas {
+    position: absolute;
+    color: rgb(0, 0, 0);
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: -1; /* Ensure it stays in the background */
+    pointer-events: none; /* Allow clicks to go through the canvas */
+  }
   
   /* Navigation Bar at Top Center */
   nav {
@@ -68,15 +79,15 @@
   .header-text {
     position: absolute;
     top: 48%;
-    left: 17%;
+    left: 11%;
     transform: translateY(-50%);
-    font-size: 37px;
+    font-size: 50px;
     z-index: 1;
   }
   
   .header-text h1 {
-    font-size: 65px;
-    margin-top: 20px;
+    font-size: 50px;
+    margin-top: 25px;
     line-height: 1.5;
     color: #fff;
   }

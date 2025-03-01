@@ -14,6 +14,7 @@
 
 <!-- contains all elements for page's header -->
 <body>
+  <canvas id="fibonacciCanvas"></canvas>
   <div id="header">
     <!-- navigation Bar (top center) -->
     <nav>
@@ -29,14 +30,14 @@
     
     <!-- message (middle left) -->
     <div class="header-text">
-      <p>Software Developer</Software></p>
+      <p>Software Developer</p>
       <!--<h1>Hi, I'm <span>Julia</span><br>Williams</h1>-->
-      <h1>Hi 👋, I'm <br><span id="typing-text"></span></h1>
+      <h1>  < Hello World > </Hello><br><span id="typing-text"></span></h1>
     </div>
     
     <!-- logo (middle right) -->
     <div class="logo">
-      <img src="images/kisspng-apple-color-emoji-human-skin-color-light-skin-woma-1713874204848_processed.webp" alt="Logo" />
+      <!--<img src="images/kisspng-apple-color-emoji-human-skin-color-light-skin-woma-1713874204848_processed.webp" alt="Logo" />-->
     </div>
   </div>
 
@@ -146,7 +147,7 @@
               <p> This ... </p>
               <a href="https://github.com/juliawill/LSTM"><i class="fa-solid fa-up-right-from-square"></i>Github</a>
           </div>
-        </div>
+        </div>  
     </div>
     <a href="#" class="button">See More</a>
     </div>
@@ -195,10 +196,150 @@
     <p>Copyright <i class="fa-solid fa-copyright"></i> Julia</p>
   </div>
   <!-- javascript-->
+
+
   <script>
+  /*
+  const canvas = document.getElementById("fibonacciCanvas");
+  const ctx = canvas.getContext("2d");
+
+  canvas.width = window.innerWidth;
+  canvas.height = window.innerHeight;
+
+  function drawFibonacciSpiral(x, y, size, n) {
+      let a = 1, b = 1;
+      for (let i = 0; i < n; i++) {
+          ctx.beginPath();
+          ctx.arc(x, y, size, Math.PI / 2 * i, Math.PI / 2 * (i + 1));
+          ctx.strokeStyle = "rgba(255, 255, 255, 0.3)";
+          ctx.lineWidth = 2;
+          ctx.stroke();
+          [a, b] = [b, a + b];
+          size = b * 10;
+      }
+  }
+
+  drawFibonacciSpiral(canvas.width / 2, canvas.height / 2, 20, 10);
+    */
+
+    const canvas = document.getElementById("fibonacciCanvas");
+const ctx = canvas.getContext("2d");
+
+canvas.width = window.innerWidth;
+canvas.height = window.innerHeight;
+
+let angle = 0; // Used to animate and rotate the spiral
+
+function drawFibonacciSpiral(x, y, size, n) {
+    let a = 1, b = 1;
+    ctx.clearRect(0, 0, canvas.width, canvas.height); // Clear the canvas on each draw to avoid overlap
+
+    for (let i = 0; i < n; i++) {
+        ctx.beginPath();
+        ctx.arc(x, y, size, Math.PI / 2 * i + angle, Math.PI / 2 * (i + 1) + angle); // Animate spiral rotation
+        ctx.strokeStyle = "rgba(255, 255, 255, 0.3)";
+        ctx.lineWidth = 3;
+        ctx.stroke();
+
+        // Update Fibonacci sequence
+        [a, b] = [b, a + b];
+        size = b * 10; // Adjust size based on the Fibonacci sequence
+    }
+}
+
+
+let numbers = [];
+    
+    function generateFloatingNumbers() {
+        // Create random numbers with random speeds and positions
+        for (let i = 0; i < 15; i++) {
+            let number = {
+                x: Math.random() * canvas.width,
+                y: Math.random() * canvas.height,
+                speed: Math.random() * 3 + 1,
+                value: (Math.random() * 100).toFixed(2), // Random number between 0 and 100
+                opacity: Math.random() * 0.5 + 0.3 // Random opacity for more dynamic effect
+            };
+            numbers.push(number);
+        }
+    }
+
+    let codeSnippets = [
+      "const data = [1, 2, 3, 5, 8];",
+      "let fibonacci = (n) => { if(n <= 1) return n; return fibonacci(n - 1) + fibonacci(n - 2); };",
+      "console.log('Fibonacci Spiral');",
+      "function draw() { ctx.arc(x, y, radius, 0, Math.PI * 2); }",
+      "let i = 0; while(i < n) { i++; }",
+      "const angle = Math.PI / 2;",
+      "for (let i = 0; i < data.length; i++) { console.log(data[i]); }",
+    ];
+
+    function generateFloatingCode() {
+      for (let i = 0; i < 10; i++) {
+        let code = {
+          x: Math.random() * canvas.width,
+          y: Math.random() * canvas.height,
+          //speed: Math.random() * 3 + 1,
+          speed: Math.random(),
+          value: codeSnippets[Math.floor(Math.random() * codeSnippets.length)], // Random code snippet
+          opacity: Math.random() * 0.5 + 0.3 // Random opacity for more dynamic effect
+        };
+        numbers.push(code); // Adding code to the numbers array (we're reusing this array for simplicity)
+      }
+    }
+
+    // Function to update and draw the numbers
+    function drawFloatingItems() {
+      // Draw floating numbers
+      for (let i = 0; i < numbers.length; i++) {
+        let item = numbers[i];
+        
+        // Draw either code or number
+        ctx.font = '12px Calibri';
+        ctx.fillStyle = `rgba(255, 255, 255, ${item.opacity * 0.5})`;
+        ctx.fillText(item.value, item.x, item.y);
+
+        // Update position of the number/code
+        item.x += item.speed; // Move to the right
+        if (item.x > canvas.width) item.x = -50; // Reset position if off screen
+
+        item.y += Math.sin(item.x * 0.01) * 2; // Create a slight up-and-down effect
+      }
+    }
+    generateFloatingCode();
+    generateFloatingNumbers();
+    function animate() {
+    drawFibonacciSpiral(canvas.width / 2, canvas.height / 2, 20, 20); // You can increase 'n' for more loops
+    drawFloatingItems();
+    angle += 0.01; // Slow rotation for animation
+    requestAnimationFrame(animate); // Continuously update the spiral
+  }
+
+  animate(); // Start the animation loop
+
+
+
+/* main page */
+document.addEventListener("DOMContentLoaded", function () {
+    const text = "I'm Julia Williams"; // The text you want to type out
+    const speed = 200; // Typing speed in milliseconds
+    let i = 0;
+
+    function typeWriter() {
+        if (i < text.length) {
+            document.getElementById("typing-text").innerHTML += text.charAt(i);
+            i++;
+            setTimeout(typeWriter, speed);
+        }
+    }
+    
+    //typeWriter(); // Start the typing effect
+});
+
+  
     /* main page */
   document.addEventListener("DOMContentLoaded", function () {
-    const text = "Julia Williams"; // The text you want to type out
+    const text = "I'm Julia Williams"; // The text you want to type out
     const speed = 200; // Typing speed in milliseconds
     let i = 0;
 
