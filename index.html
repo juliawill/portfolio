@@ -18,6 +18,12 @@
   <canvas id="fibonacciCanvas"></canvas>
   <div id="header">
     <!-- navigation Bar (top center) -->
+    <div id="scroll-bar"></div>
+    <div id="error-counter">
+      <p>404 Errors Avoided: <span id="error-count">0</span></p>
+      <p id="error-message"></p>
+  </div>
+  
     <nav>
       <ul>
         <li><a href="#header">Home</a></li>
@@ -286,6 +292,32 @@ function showYear(year) {
     }
 
 */
+
+let errorCount = 0;
+const errorMessages = [
+    "404 errors avoided. You’re welcome!",
+    "Another 404 dodged like a pro!",
+    "No errors here, just smooth sailing!",
+    "404 errors are scared of this page!",
+    "You’ll never see a 404 on this site. Guaranteed!",
+    "Another 404 avoided - count your wins!"
+];
+
+setInterval(function() {
+    errorCount++;
+    document.getElementById('error-count').textContent = errorCount;
+    document.getElementById('error-message').textContent = errorMessages[errorCount % errorMessages.length];
+}, 5000); // Increment every 5 seconds
+
+
+window.addEventListener('scroll', function() {
+    var docHeight = document.documentElement.scrollHeight - window.innerHeight;
+    var scrollPosition = window.scrollY;
+    var scrollPercent = (scrollPosition / docHeight) * 100;
+
+    document.getElementById('scroll-bar').style.width = scrollPercent + '%';
+});
+
 
 const canvas = document.getElementById("fibonacciCanvas");
 const ctx = canvas.getContext("2d");
