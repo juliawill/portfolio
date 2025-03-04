@@ -10,6 +10,7 @@
   <link rel="stylesheet" href="style.css" />
   <script src="https://kit.fontawesome.com/43a8458b2b.js" crossorigin="anonymous"></script>
   <link href="https://cdn.jsdelivr.net/gh/GoogleChrome/webfonts@1.0.0/clear-sans.css" rel="stylesheet">
+
 </head>
 
 <!-- contains all elements for page's header -->
@@ -19,12 +20,12 @@
     <!-- navigation Bar (top center) -->
     <nav>
       <ul>
-        <li><a href="#">Home</a></li>
-        <li><a href="#">About</a></li>
-        <li><a href="#">Services</a></li>
-        <li><a href="#">Projects</a></li>
-        <li><a href="#">Articles</a></li>
-        <li><a href="#">Contact</a></li>
+        <li><a href="#header">Home</a></li>
+        <li><a href="#about">About</a></li>
+        <li><a href="#services">Services</a></li>
+        <li><a href="#portfolio">Projects</a></li>
+        <li><a href="#Articles">Articles</a></li>
+        <li><a href="#contact">Contact</a></li>
       </ul>
     </nav>
     
@@ -32,12 +33,12 @@
     <div class="header-text">
       <p>Software Developer</p>
       <!--<h1>Hi, I'm <span>Julia</span><br>Williams</h1>-->
-      <h1>  < Hello World > </Hello><br><span id="typing-text"></span></h1>
+      <h1>  < Hello World ><br><span id="typing-text"></span></h1>
     </div>
     
     <!-- logo (middle right) -->
-    <div class="logo">
-      <!--<img src="images/kisspng-apple-color-emoji-human-skin-color-light-skin-woma-1713874204848_processed.webp" alt="Logo" />-->
+    <div class="logo"
+      <!-- img src="images/kisspng-apple-color-emoji-human-skin-color-light-skin-woma-1713874204848_processed.webp" alt="Logo" -->
     </div>
   </div>
 
@@ -47,7 +48,7 @@
       <div class="row">
         <div class="about-col-1">
             <!--come back!-->
-            <img src="images/IMG_7069.png"/>
+            <img src="Screenshot 2025-03-03 at 4.40.37 PM.png"/>
         </div>
         <div class="about-col-2">
             <h1 class="sub-title">About Me 📝</h1>
@@ -87,26 +88,25 @@
             <div>
                 <i class="fa-solid fa-code"></i>
                 <h2>Software Development</h2>
-                <p>description of first service</p>
-                <a href="#"></a>Learn more</a>
+                <p>Backend developer with expertise in Python, Java, C, C++, etc., specializing in cloud computing and scalable systems. Passionate about building robust frontend and backend solutions and expanding my software engineering portfolio.</p>
+                <!--<a href="#"></a>Learn more</a>-->
             </div>
             <div>
                 <i class="fa-solid fa-database"></i>
-                <h2>Data Analytics</h2>
-                <p>description of first service</p>
-                <a href="#"></a>Learn more</a>
+                <h2>Data Analysis</h2>
+                <p>Experienced in data analytics and machine learning, with a strong foundation in mathematics and computer science. Led projects in ML predictive analytics. Skilled in data visualization, statistical analysis, and performance optimization to drive data-driven decision-making.</p>
+                <!--<a href="#"></a>Learn more</a>-->
             </div>
             <div>
                 <i class="fa-solid fa-cloud"></i>
-                <h2>Cloud Computing Implementations</h2>
-                <p>description of first service</p>
-                <a href="#"></a>Learn more</a>
+                <h2>Cloud Computing</h2>
+                <p>Certified in AWS Cloud Computing, with hands-on experience in cloud migrations across multiple industries. Skilled in AWS services like EC2, S3, and RDS, and proficient in cloud architecture design to align with business needs and scalability requirements.</p>
+                <!--<a href="#"></a>Learn more</a>-->
             </div>
             <div>
                 <i class="fa-solid fa-laptop-code"></i>
                 <h2>Web Development</h2>
-                <p>description of first service</p>
-                <a href="#"></a>Learn more</a>
+                <p>Built dynamic, user-friendly websites, including the one you're currently viewing, showcasing my skills in front-end and back-end development. One of my standout projects is a quiz game, where I applied my knowledge of HTML, CSS, JavaScript, and APIs to create an engaging and interactive experience.</p>
             </div>
             </div>
     </div>
@@ -121,10 +121,10 @@
         <div class="project">
             <!--<i class="fa-solid fa-dollar-sign"></i>
             <i class="fa-solid fa-chart-line"></i>-->
-            <img src="images/Screenshot 2025-02-21 at 11.46.46 AM.png">
+            <img src="Screenshot 2025-03-03 at 4.35.07 PM.png">
             <div class="layer">
-                <h3>Stock Forecasting Data Pipeline</h3>
-                <p> This ... </p>
+                <h3>Stock Forecasting Tool</h3>
+                <p>A Google Cloud pipeline using Airflow, DBT, and Python for automated stock data processing and prediction </p>
                 <a href="https://github.com/readingshapes/stock_forecasting"><i class="fa-solid fa-up-right-from-square"></i>Github</a>
             </div>
         </div>
@@ -132,26 +132,44 @@
         <div class="project">
             <!--<i class="fa-solid fa-gamepad"></i>
             <i class="fa-solid fa-trophy"></i>-->
-            <img src="images/Screenshot 2025-02-21 at 11.50.50 AM.png">
+            <img src="Screenshot 2025-03-03 at 4.33.13 PM.png">
             <div class="layer">
-                <h3>Front-End Quiz Game</h3>
-                <p> This ... </p>
+                <h3>Quiz Game</h3>
+                <p> A React application with a Node.js backend, using PostgreSQL for data storage and Docker for containerization </p>
                 <a href="https://github.com/juliawill/quiz-game"><i class="fa-solid fa-up-right-from-square"></i>Github</a>
             </div>
 
         </div>
         <div class="project">
-          <img src="images/Screenshot 2025-02-21 at 11.50.50 AM.png">
+          <img src="Screenshot 2025-03-03 at 4.31.51 PM.png">
           <div class="layer">
-              <h3>Deep Learning Network</h3>
-              <p> This ... </p>
+              <h3>LSTM Neural Network</h3>
+              <p> A deep learning-based Long Short-Term Memory neural network implemented in Python for time series forecasting, leveraging long-term dependencies in sequential data </p>
               <a href="https://github.com/juliawill/LSTM"><i class="fa-solid fa-up-right-from-square"></i>Github</a>
           </div>
         </div>  
     </div>
-    <a href="#" class="button">See More</a>
+    <!--<a href="#" class="button">See More</a>-->
     </div>
   </div>
+
+  <div id="Github">
+    <div class="container1">
+      <h1 class="sub-title">Github Contributions</h1>
+      
+      <div class="graph">
+        <a href="https://github.com/juliawill">
+          <img src="https://ghchart.rshah.org/16ecb3/juliawill" alt="GitHub Contributions">          
+          <!--<img src="https://ghchart.rshah.org/0099ff/juliawill?transparent" alt="GitHub Contributions">-->
+      </a>
+      </div>
+      <p>2024 - 2025</p>
+      <!--<div class="buttons">
+        <button onclick="showYear(2024)">Show 2024</button>
+        <button onclick="showYear(2025)">Show 2025</button>-->
+      </div>
+      </div>
+    </div>
 
   <div id ="Articles">
     <div class="container">
@@ -222,7 +240,54 @@
   drawFibonacciSpiral(canvas.width / 2, canvas.height / 2, 20, 10);
     */
 
-    const canvas = document.getElementById("fibonacciCanvas");
+    /*
+    async function fetchGitHubContributions() {
+    const query = `
+    {
+        user(login: "YOUR_GITHUB_USERNAME") {
+            contributionsCollection {
+                contributionCalendar {
+                    totalContributions
+                    weeks {
+                        contributionDays {
+                            date
+                            contributionCount
+                            color
+                        }
+                    }
+                }
+            }
+        }
+    }`;
+
+    const response = await fetch("https://api.github.com/graphql", {
+        method: "POST",
+        headers: {
+            "Content-Type": "application/json",
+            "Authorization": "Bearer YOUR_GITHUB_PERSONAL_ACCESS_TOKEN"
+        },
+        body: JSON.stringify({ query }),
+    });
+
+    const data = await response.json();
+    console.log(data);
+}
+
+fetchGitHubContributions();
+
+
+function showYear(year) {
+        const img = document.getElementById("github-chart");
+        if (year === 2024) {
+            img.src = "https://ghchart.rshah.org/juliawill";  // Shows the default current year (2024)
+        } else if (year === 2025) {
+            img.src = "";
+        }
+    }
+
+*/
+
+const canvas = document.getElementById("fibonacciCanvas");
 const ctx = canvas.getContext("2d");
 
 canvas.width = window.innerWidth;
@@ -275,7 +340,7 @@ let numbers = [];
     ];
 
     function generateFloatingCode() {
-      for (let i = 0; i < 10; i++) {
+      for (let i = 0; i < 20; i++) {
         let code = {
           x: Math.random() * canvas.width,
           y: Math.random() * canvas.height,
@@ -295,7 +360,7 @@ let numbers = [];
         let item = numbers[i];
         
         // Draw either code or number
-        ctx.font = '12px Calibri';
+        ctx.font = '15px Calibri';
         ctx.fillStyle = `rgba(255, 255, 255, ${item.opacity * 0.5})`;
         ctx.fillText(item.value, item.x, item.y);
 
@@ -308,7 +373,9 @@ let numbers = [];
     }
     generateFloatingCode();
     generateFloatingNumbers();
+
     function animate() {
+    ctx.clearRect(0, 0, canvas.width, canvas.height);
     drawFibonacciSpiral(canvas.width / 2, canvas.height / 2, 20, 20); // You can increase 'n' for more loops
     drawFloatingItems();
     angle += 0.01; // Slow rotation for animation
@@ -317,6 +384,7 @@ let numbers = [];
 
   animate(); // Start the animation loop
 
+  
 
 
 /* main page */

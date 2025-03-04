@@ -3,6 +3,7 @@
     padding: 0;
     font-family:'Roboto', monospace;
     box-sizing: border-box;
+    background: transparent;
   }
   
   body {
@@ -13,19 +14,39 @@
     min-height: 100vh;
   }
   
-  #header {
+  /*#header {
     position: relative;
     width: 100%;
     height: 100vh;
     /*background: linear-gradient(to bottom, #000000, rgba(50, 0, 50, 0.1));
     background-size: cover;
     background-position: center;
-    */
+  
+  } 
+*/
+
+  #header {
+    display: flex;
+    justify-content: center; /* Centers horizontally */
+    align-items: center; /* Centers vertically */
+    height: 100vh; /* Makes the header take up full viewport height */
+    text-align: center; /* Centers inline text */
+    flex-direction: column; /* Stacks elements vertically */
   }
+
+  .header-text {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    text-align: center;
+  }
+  
+  
 
   #fibonacciCanvas {
     position: absolute;
-    color: rgb(0, 0, 0);
+    color: rgb(167, 40, 40);
     top: 0;
     left: 0;
     width: 100%;
@@ -78,8 +99,9 @@
   /* Header Text on the Middle Left */
   .header-text {
     position: absolute;
-    top: 48%;
-    left: 11%;
+    top: 49%;
+    left: 30.5%;
+    /*text-align: center;*/
     transform: translateY(-50%);
     font-size: 50px;
     z-index: 1;
@@ -315,7 +337,7 @@
 
 .project-list{
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
     gap: 40px;
     margin-top: 50px;
     width: 100%;
@@ -377,7 +399,7 @@
 /*links*/
 .layer a{
   margin-top: 20px;
-  color: #16ecb3;
+  color: #031913;
   text-decoration: none;
   font-size: 18px;
   line-height: 60px;
@@ -404,6 +426,7 @@
   margin: 50px auto;
   width: fit-content;
   border: 1px solid #16ecb3;
+  /*border: 1px solid #031913;*/
   padding: 14px 50px;
   border-radius: 6px;
   text-decoration: none;
@@ -413,6 +436,39 @@
 .button:hover {
   background: #16ecb3;
 
+}
+
+/*---github---*/
+#Github {
+  display: flex;
+  justify-content: center; /* Centers content horizontally */
+  align-items: center; /* Centers content vertically */
+  flex-direction: column;
+  /*height: 100vh; Makes the section take up the full viewport height*/
+  text-align: center;
+  padding: 50px;
+}
+
+.container1{
+  text-align: center;
+}
+
+#Github .sub-title {
+  text-align: center;
+}
+
+.graph {
+  margin-top: 30px;
+  display: flex;
+  justify-content: center; /* Centers the image */
+  align-items: center;
+  width: 100%;
+}
+
+
+.graph img {
+  align-items: center;
+  height: 150px;
 }
 
 /*---contact---*/
@@ -511,11 +567,23 @@ form button2{
   
 }
 
+/*
+#Github {
+  display: flex;
+  justify-content: center; /* Centers horizontally 
+  align-items: center; /* Centers vertically 
+  height: 100vh; /* Makes the header take up full viewport height 
+  text-align: center; /* Centers inline text 
+  flex-direction: column; /* Stacks elements vertically 
+} */
+
+
 #Articles {
   padding: 50px 0; 
   padding-left: 50px;
   padding-right: 50px;
   margin-bottom: 30px;
+  height: 100vh;
 }
 
 .container {
