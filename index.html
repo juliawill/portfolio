@@ -23,16 +23,20 @@
       <p>404 Errors Avoided: <span id="error-count">0</span></p>
       <p id="error-message"></p>
   </div>
-  
+
+    
     <nav>
-      <ul>
+      <ul id = "sidemenu">
         <li><a href="#header">Home</a></li>
         <li><a href="#about">About</a></li>
         <li><a href="#services">Services</a></li>
         <li><a href="#portfolio">Projects</a></li>
         <li><a href="#Articles">Articles</a></li>
         <li><a href="#contact">Contact</a></li>
+        <i class="fas fa-times"></i>
+        <!--<i class="fa-solid fa-xmark"></i>-->
       </ul>
+      <i class="fa-solid fa-bars"></i>
     </nav>
     
     <!-- message (middle left) -->
@@ -44,13 +48,13 @@
     
     <!-- logo (middle right) -->
     <div class="logo"
-      <!-- img src="images/kisspng-apple-color-emoji-human-skin-color-light-skin-woma-1713874204848_processed.webp" alt="Logo" -->
+      <!-img src="images/kisspng-apple-color-emoji-human-skin-color-light-skin-woma-1713874204848_processed.webp" alt="Logo" -->
     </div>
   </div>
 
   <!-- about page (kept as is) -->
   <div id="about">
-    <div class="container">
+   <div class="container">
       <div class="row">
         <div class="about-col-1">
             <!--come back!-->
@@ -303,6 +307,8 @@ const errorMessages = [
     "Another 404 avoided - count your wins!"
 ];
 
+
+
 setInterval(function() {
     errorCount++;
     document.getElementById('error-count').textContent = errorCount;
@@ -468,6 +474,30 @@ document.addEventListener("DOMContentLoaded", function () {
         event.currentTarget.classList.add("active-link");
         document.getElementById(tabname).classList.add("active-tab");
     }
+  </script>
+
+  <script>
+    var sidemenu = document.getElementById("sidemenu");
+
+    function openmenu() {
+      sidemenu.style.right = "0";
+    }
+    function closemenu() {
+      sidemenu.style.right = "-200";
+    }
+
+    function openMenu() {
+  document.querySelector("nav ul").classList.add("active");
+  }
+
+  function closeMenu() {
+    document.querySelector("nav ul").classList.remove("active");
+  }
+
+  
+
+
+
   </script>
 </body>
 </html>

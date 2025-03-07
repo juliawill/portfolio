@@ -585,17 +585,101 @@ form button2{
   margin-bottom: 15px;
   margin-top: 15px;
   font-weight: 300;
+  width: 100%;
 }
 
 .copyright i {
   color: #16ecb3;
+
 }
 
 /* making css responsive - small screens*/
 
+nav .fas{
+  display: none;
+} 
+
 @media only screen and (max-width: 600px) {
+  #header{
+    /*add background url*/
+    /*background-image: url (); maybe put fib here??*/
+    position: relative;  /* Ensure the header is positioned relative to its parent */
+    background-image: url(); /* You can add a background image here if you want */
+    background-position: center;
+    background-size: cover;
+  }
+
+  .container{
+
+    text-align: center;
+  }
+  /*this is where "software developer" text is */
+    .header-text{
+      
+
+      font-size: 16px;
+      position: absolute;
+      top: 50%;  /* Vertically center the text */
+      left: 50%;  /* Horizontally center the text */
+      /*transform: translate(-50%, -50%);  /* Adjust for exact centering */
+      font-size: 16px;
+      /*text-align: center;  /* Ensure the text is centered */
+      color: white; /* Ensure the text is visible */
+      
+    }
+
+   
   
+  .header-text h1{
+    font-size: 25px;
+    /*top: 50%;
+    /*left: 70%;  /* Horizontally center the text */
+    /*transform: translate(-50%, -50%);  /* Adjust for exact centering */
+    /*margin-top: 100%;
+    text-align: center;
+  }
+
+  nav .fas {
+    display: block;
+    font-size: 25px;
+  }
+/*
+  nav .fas {
+    display: block;
+    font-size: 25px;
+  }
+  nav ul {
+    background: #16ecb3;
+    position: fixed;
+    top: 0;
+    left: -100%;
+    width: 250px;
+    height: 100vh;
+    background: rgba(0,0,0,0.9);
+    display: flex;
+    flex-direction: column;
+    padding-top: 50px;
+    align-items: center;
+    gap: 20px;
+    z-index: 1000;
+    padding: 20px;
+    transition: right 0.3s ease-in-out;
+  }
+  nav ul.active {
+    left: 0;
+  }
+
+  nav ul li {
+    display: block;
+    margin: 25px 0;
+    /*list-style: none;
+    
+  }
+  */
+    
+  }
 }
+
 
 /*
 #Github {
@@ -712,6 +796,8 @@ form button2{
 .article:hover .layer {
   height: 100%;
 }
+
+
 
 
 
