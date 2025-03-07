@@ -33,7 +33,7 @@
         <li><a href="#portfolio">Projects</a></li>
         <li><a href="#Articles">Articles</a></li>
         <li><a href="#contact">Contact</a></li>
-        <i class="fas fa-times"></i>
+        <!--<i class="fas fa-times"></i>-->
         <!--<i class="fa-solid fa-xmark"></i>-->
       </ul>
       <!-- uncomment!!-->
@@ -194,6 +194,10 @@
               <a href="https://medium.com/@juliawilliams_79854/stock-forecasting-with-the-sarima-model-edad16d37445"><i class="fa-solid fa-up-right-from-square"></i>Medium</a>
             </div>
         </div>
+        <!-- Fibonacci Spiral container -->
+      <div class="fibonacci-spiral-container">
+        <canvas id="fibonacciCanvasArticle" width="400" height="400"></canvas>
+      </div>
       </div>
     </div>
   </div>
@@ -424,6 +428,41 @@ let numbers = [];
   animate(); // Start the animation loop
 
   
+// Get the new canvas and its context for the Published Work section
+const fibonacciCanvasArticle = document.getElementById("fibonacciCanvasArticle");
+const ctxArticle = fibonacciCanvasArticle.getContext("2d");
+
+fibonacciCanvasArticle.width = fibonacciCanvasArticle.parentElement.clientWidth;
+fibonacciCanvasArticle.height = 400; // Match the height of the container
+
+let angleArticle = 0;
+
+function drawFibonacciSpiralArticle(x, y, size, n) {
+    let a = 1, b = 1;
+    ctxArticle.clearRect(0, 0, fibonacciCanvasArticle.width, fibonacciCanvasArticle.height); // Clear on each draw
+
+    for (let i = 0; i < n; i++) {
+        ctxArticle.beginPath();
+        ctxArticle.arc(x, y, size, Math.PI / 2 * i + angleArticle, Math.PI / 2 * (i + 1) + angleArticle); // Animate spiral rotation
+        ctxArticle.strokeStyle = "rgba(255, 255, 255, 0.3)";
+        ctxArticle.lineWidth = 1;
+        ctxArticle.stroke();
+
+        // Update Fibonacci sequence
+        [a, b] = [b, a + b];
+        size = b * 10;
+    }
+}
+
+// Animation loop for the Fibonacci spiral in the Published Work section
+function animateArticle() {
+    ctxArticle.clearRect(0, 0, fibonacciCanvasArticle.width, fibonacciCanvasArticle.height); // Clear the canvas
+    drawFibonacciSpiralArticle(fibonacciCanvasArticle.width / 2, fibonacciCanvasArticle.height / 2, 20, 10); // Draw the spiral
+    angleArticle += 0.01; // Rotate slowly for the animation effect
+    requestAnimationFrame(animateArticle); // Keep animating
+}
+
+animateArticle(); // Start the animation loop
 
 
 /* main page */
