@@ -8,6 +8,9 @@
   <title>Julia's Portfolio</title>
   <!-- link the css file to the html file -->
   <link rel="stylesheet" href="style.css" />
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Mono:wght@500&family=Manrope:wght@400;600;700;800&display=swap" rel="stylesheet">
   <script src="https://kit.fontawesome.com/43a8458b2b.js" crossorigin="anonymous"></script>
   <link href="https://cdn.jsdelivr.net/gh/GoogleChrome/webfonts@1.0.0/clear-sans.css" rel="stylesheet">
 
@@ -42,9 +45,9 @@
     
     <!-- message (middle left) -->
     <div class="header-text">
-      <p>Software Developer</p>
+      <p>Lead AI Engineer</p>
       <!--<h1>Hi, I'm <span>Julia</span><br>Williams</h1>-->
-      <h1>  < Hello World ><br><span id="typing-text"></span></h1>
+      <h1 class="code-hero">&lt;h1&gt;Hello, World!&lt;/h1&gt;<br><span id="typing-text"></span></h1>
     </div>
     
     <!-- logo (middle right) -->
@@ -60,11 +63,11 @@
         <div class="about-col-1">
             <!--come back!-->
             <!--<img src="Screenshot 2025-03-03 at 4.40.37 PM.png"/>-->
-            <img src="images/IMG_0684.png">
+            <img src="images/julia-portrait-2026.png" alt="Julia Williams headshot">
         </div>
         <div class="about-col-2">
             <h1 class="sub-title">About Me 📝</h1>
-            <p>I am a Software Developer with a passion for data science. I specialize in backend development, cloud computing, and scalable systems. Currently working at a top tech consulting firm, I lead cloud migration projects and drive ML-powered stock forecasting as a side project. Proficient in Python, Java, C, and C++, I enjoy building efficient, high-performance systems that solve complex problems. I'm passionate about continuous learning, optimizing infrastructure, and delivering impactful solutions. </p>
+            <p>I am a Lead AI Engineer and AI Builder focused on designing and shipping practical AI systems that solve real business problems. I lead cross-functional teams from idea to production, aligning engineering, product, and stakeholders to deliver scalable outcomes. My background spans machine learning, backend engineering, and cloud architecture, with hands-on experience building end-to-end data and AI pipelines. I enjoy mentoring teams, raising technical standards, and turning complex ideas into reliable products.</p>
             <div class="tab-titles">
                 <p class="tab-links active-link" onclick="opentab('skills')">Skills</p>
                 <p class="tab-links" onclick="opentab('experience')">Experience</p>
@@ -72,12 +75,13 @@
                 <p class="tab-links" onclick="opentab('certifications')">Certifications</p>
             </div>
             <div class="tab-contents active-tab" id = "skills">
-                <ul><li><span>Software</span><br>Development</li></ul>
-                <ul><li><span>Data</span><br>Analytics</li></ul>
-                <ul><li><span>Cloud</span><br>Computing</li></ul>
+                <ul><li><span>AI/ML</span><br>Model Development and AI Systems</li></ul>
+                <ul><li><span>Leadership</span><br>Team Management and Technical Direction</li></ul>
+                <ul><li><span>Cloud</span><br>AWS Architecture and Scalable Infrastructure</li></ul>
+                <ul><li><span>Engineering</span><br>Backend Development and Data Pipelines</li></ul>
             </div>
             <div class="tab-contents" id="experience" >
-                <ul><li><span>2022-Current</span><br>Software Development Systems Analyst - Accenture</li></ul>
+                <ul><li><span>2022-Now</span><br>Lead AI Engineer and Consultant - Accenture</li></ul>
                 <ul><li><span>2023-Current</span><br>Lead Python Developer and PM - Team Innovation @ Accenture </li></ul>
                 <ul><li><span>2020-2021</span><br>Software Engineering Internship - ZSquare Solutions Inc.</li></ul>
             </div>
@@ -175,7 +179,7 @@
           <!--<img src="https://ghchart.rshah.org/0099ff/juliawill?transparent" alt="GitHub Contributions">-->
       </a>
       </div>
-      <p>2024 - 2025</p>
+      <p>2025 - 2026</p>
       <!--<div class="buttons">
         <button onclick="showYear(2024)">Show 2024</button>
         <button onclick="showYear(2025)">Show 2025</button>-->
@@ -334,137 +338,196 @@ window.addEventListener('scroll', function() {
 
 const canvas = document.getElementById("fibonacciCanvas");
 const ctx = canvas.getContext("2d");
+const headerSection = document.getElementById("header");
 
-canvas.width = window.innerWidth;
-canvas.height = window.innerHeight;
+function getDocumentHeight() {
+    return Math.max(
+        document.body.scrollHeight,
+        document.documentElement.scrollHeight,
+        document.body.offsetHeight,
+        document.documentElement.offsetHeight
+    );
+}
 
-let angle = 0; // Used to animate and rotate the spiral
+function resizeMainCanvas() {
+    canvas.width = window.innerWidth;
+    canvas.height = window.innerHeight;
+}
+
+resizeMainCanvas();
+
+let angle = 0;
+let numbers = [];
+
+const codeSnippets = [
+  "const data = [1, 2, 3, 5, 8];",
+  "let fibonacci = (n) => n <= 1 ? n : fibonacci(n - 1) + fibonacci(n - 2);",
+  "console.log('Fibonacci Spiral');",
+  "function draw() { ctx.arc(x, y, radius, 0, Math.PI * 2); }",
+  "for (const card of projects) { card.render(); }",
+  "const angle = Math.PI / 2;",
+  "requestAnimationFrame(animate);",
+];
+
+function createFloatingItem(type) {
+    const docHeight = getDocumentHeight();
+    return {
+        type,
+        x: Math.random() * canvas.width,
+        y: Math.random() * docHeight,
+        speed: Math.random() * 1.1 + 0.35,
+        drift: Math.random() * 0.4 + 0.1,
+        phase: Math.random() * Math.PI * 2,
+        value: type === "number"
+            ? (Math.random() * 100).toFixed(2)
+            : codeSnippets[Math.floor(Math.random() * codeSnippets.length)],
+        opacity: Math.random() * 0.28 + 0.18
+    };
+}
+
+function seedFloatingItems() {
+    numbers = [];
+    for (let i = 0; i < 24; i++) numbers.push(createFloatingItem("number"));
+    for (let i = 0; i < 28; i++) numbers.push(createFloatingItem("code"));
+}
 
 function drawFibonacciSpiral(x, y, size, n) {
-    let a = 1, b = 1;
-    ctx.clearRect(0, 0, canvas.width, canvas.height); // Clear the canvas on each draw to avoid overlap
+    let a = 1;
+    let b = 1;
 
     for (let i = 0; i < n; i++) {
         ctx.beginPath();
-        ctx.arc(x, y, size, Math.PI / 2 * i + angle, Math.PI / 2 * (i + 1) + angle); // Animate spiral rotation
-        ctx.strokeStyle = "rgba(255, 255, 255, 0.3)";
-        ctx.lineWidth = 3;
+        ctx.arc(x, y, size, Math.PI / 2 * i + angle, Math.PI / 2 * (i + 1) + angle);
+        ctx.strokeStyle = "rgba(124, 140, 255, 0.22)";
+        ctx.lineWidth = Math.max(1.2, 3 - i * 0.1);
         ctx.stroke();
-
-        // Update Fibonacci sequence
-        [a, b] = [b, a + b];
-        size = b * 10; // Adjust size based on the Fibonacci sequence
-    }
-}
-
-
-let numbers = [];
-    
-    function generateFloatingNumbers() {
-        // Create random numbers with random speeds and positions
-        for (let i = 0; i < 15; i++) {
-            let number = {
-                x: Math.random() * canvas.width,
-                y: Math.random() * canvas.height,
-                speed: Math.random() * 3 + 1,
-                value: (Math.random() * 100).toFixed(2), // Random number between 0 and 100
-                opacity: Math.random() * 0.5 + 0.3 // Random opacity for more dynamic effect
-            };
-            numbers.push(number);
-        }
-    }
-
-    let codeSnippets = [
-      "const data = [1, 2, 3, 5, 8];",
-      "let fibonacci = (n) => { if(n <= 1) return n; return fibonacci(n - 1) + fibonacci(n - 2); };",
-      "console.log('Fibonacci Spiral');",
-      "function draw() { ctx.arc(x, y, radius, 0, Math.PI * 2); }",
-      "let i = 0; while(i < n) { i++; }",
-      "const angle = Math.PI / 2;",
-      "for (let i = 0; i < data.length; i++) { console.log(data[i]); }",
-    ];
-
-    function generateFloatingCode() {
-      for (let i = 0; i < 20; i++) {
-        let code = {
-          x: Math.random() * canvas.width,
-          y: Math.random() * canvas.height,
-          //speed: Math.random() * 3 + 1,
-          speed: Math.random(),
-          value: codeSnippets[Math.floor(Math.random() * codeSnippets.length)], // Random code snippet
-          opacity: Math.random() * 0.5 + 0.3 // Random opacity for more dynamic effect
-        };
-        numbers.push(code); // Adding code to the numbers array (we're reusing this array for simplicity)
-      }
-    }
-
-    // Function to update and draw the numbers
-    function drawFloatingItems() {
-      // Draw floating numbers
-      for (let i = 0; i < numbers.length; i++) {
-        let item = numbers[i];
-        
-        // Draw either code or number
-        ctx.font = '15px Calibri';
-        ctx.fillStyle = `rgba(255, 255, 255, ${item.opacity * 0.5})`;
-        ctx.fillText(item.value, item.x, item.y);
-
-        // Update position of the number/code
-        item.x += item.speed; // Move to the right
-        if (item.x > canvas.width) item.x = -50; // Reset position if off screen
-
-        item.y += Math.sin(item.x * 0.01) * 2; // Create a slight up-and-down effect
-      }
-    }
-    generateFloatingCode();
-    generateFloatingNumbers();
-
-    function animate() {
-    ctx.clearRect(0, 0, canvas.width, canvas.height);
-    drawFibonacciSpiral(canvas.width / 2, canvas.height / 2, 20, 20); // You can increase 'n' for more loops
-    drawFloatingItems();
-    angle += 0.01; // Slow rotation for animation
-    requestAnimationFrame(animate); // Continuously update the spiral
-  }
-
-  animate(); // Start the animation loop
-
-  
-// Get the new canvas and its context for the Published Work section
-const fibonacciCanvasArticle = document.getElementById("fibonacciCanvasArticle");
-const ctxArticle = fibonacciCanvasArticle.getContext("2d");
-
-fibonacciCanvasArticle.width = fibonacciCanvasArticle.parentElement.clientWidth;
-fibonacciCanvasArticle.height = 400; // Match the height of the container
-
-let angleArticle = 0;
-
-function drawFibonacciSpiralArticle(x, y, size, n) {
-    let a = 1, b = 1;
-    ctxArticle.clearRect(0, 0, fibonacciCanvasArticle.width, fibonacciCanvasArticle.height); // Clear on each draw
-
-    for (let i = 0; i < n; i++) {
-        ctxArticle.beginPath();
-        ctxArticle.arc(x, y, size, Math.PI / 2 * i + angleArticle, Math.PI / 2 * (i + 1) + angleArticle); // Animate spiral rotation
-        ctxArticle.strokeStyle = "rgba(255, 255, 255, 0.3)";
-        ctxArticle.lineWidth = 1;
-        ctxArticle.stroke();
-
-        // Update Fibonacci sequence
         [a, b] = [b, a + b];
         size = b * 10;
     }
 }
 
-// Animation loop for the Fibonacci spiral in the Published Work section
-function animateArticle() {
-    ctxArticle.clearRect(0, 0, fibonacciCanvasArticle.width, fibonacciCanvasArticle.height); // Clear the canvas
-    drawFibonacciSpiralArticle(fibonacciCanvasArticle.width / 2, fibonacciCanvasArticle.height / 2, 20, 10); // Draw the spiral
-    angleArticle += 0.01; // Rotate slowly for the animation effect
-    requestAnimationFrame(animateArticle); // Keep animating
+function shouldDrawHeroSpiral() {
+    if (!headerSection) return false;
+    const headerRect = headerSection.getBoundingClientRect();
+    return headerRect.bottom > 0;
 }
 
-animateArticle(); // Start the animation loop
+function drawFloatingItems() {
+    const scrollY = window.scrollY;
+    const docHeight = getDocumentHeight();
+
+    for (let i = 0; i < numbers.length; i++) {
+        const item = numbers[i];
+        const screenY = item.y - scrollY;
+
+        if (screenY > -40 && screenY < canvas.height + 40) {
+            ctx.font = item.type === "number" ? "14px DM Mono" : "13px DM Mono";
+            ctx.fillStyle = `rgba(238, 242, 255, ${item.opacity})`;
+            ctx.fillText(item.value, item.x, screenY);
+        }
+
+        item.x += item.speed;
+        item.phase += 0.018;
+        item.y += Math.sin(item.phase) * item.drift;
+
+        if (item.x > canvas.width + 80) {
+            item.x = -220;
+            item.y = Math.random() * docHeight;
+        }
+
+        if (item.y < 0) item.y = docHeight;
+        if (item.y > docHeight) item.y = 0;
+    }
+}
+
+seedFloatingItems();
+
+function animate() {
+    ctx.clearRect(0, 0, canvas.width, canvas.height);
+    if (shouldDrawHeroSpiral()) {
+        const spiralY = Math.min(canvas.height * 0.35, 280);
+        drawFibonacciSpiral(canvas.width / 2, spiralY, 20, 20);
+    }
+    drawFloatingItems();
+    angle += 0.008;
+    requestAnimationFrame(animate);
+}
+
+animate();
+
+  
+// Get the new canvas and its context for the Published Work section
+const fibonacciCanvasArticle = document.getElementById("fibonacciCanvasArticle");
+const ctxArticle = fibonacciCanvasArticle.getContext("2d");
+let angleArticle = 0;
+
+function setupArticleCanvas() {
+    const parentRect = fibonacciCanvasArticle.parentElement.getBoundingClientRect();
+    const dpr = window.devicePixelRatio || 1;
+    const width = Math.max(280, Math.floor(parentRect.width));
+    const height = Math.max(360, Math.floor(parentRect.height));
+
+    fibonacciCanvasArticle.width = Math.floor(width * dpr);
+    fibonacciCanvasArticle.height = Math.floor(height * dpr);
+    fibonacciCanvasArticle.style.width = `${width}px`;
+    fibonacciCanvasArticle.style.height = `${height}px`;
+    ctxArticle.setTransform(dpr, 0, 0, dpr, 0, 0);
+}
+
+function drawFibonacciSpiralArticle() {
+    const width = fibonacciCanvasArticle.clientWidth;
+    const height = fibonacciCanvasArticle.clientHeight;
+    const centerX = width * 0.58;
+    const centerY = height * 0.52;
+    const maxRadius = Math.min(width, height) * 0.43;
+    const baseUnit = maxRadius / 21;
+    let radius = baseUnit * 2;
+    let a = 1;
+    let b = 1;
+
+    ctxArticle.clearRect(0, 0, width, height);
+
+    for (let i = 0; i < 8; i++) {
+        const startAngle = Math.PI / 2 * i + angleArticle;
+        const endAngle = Math.PI / 2 * (i + 1) + angleArticle;
+        const gradient = ctxArticle.createLinearGradient(0, 0, width, height);
+        gradient.addColorStop(0, `rgba(51, 209, 198, ${0.36 - i * 0.03})`);
+        gradient.addColorStop(1, `rgba(124, 140, 255, ${0.30 - i * 0.025})`);
+
+        ctxArticle.beginPath();
+        ctxArticle.arc(centerX, centerY, radius, startAngle, endAngle);
+        ctxArticle.strokeStyle = gradient;
+        ctxArticle.lineWidth = Math.max(1, 2.8 - i * 0.2);
+        ctxArticle.shadowColor = "rgba(124, 140, 255, 0.16)";
+        ctxArticle.shadowBlur = 4;
+        ctxArticle.stroke();
+
+        [a, b] = [b, a + b];
+        radius = Math.min(maxRadius, b * baseUnit);
+    }
+
+    ctxArticle.shadowBlur = 0;
+    ctxArticle.beginPath();
+    ctxArticle.arc(centerX, centerY, 4, 0, Math.PI * 2);
+    ctxArticle.fillStyle = "rgba(124, 140, 255, 0.8)";
+    ctxArticle.fill();
+}
+
+// Animation loop for the Fibonacci spiral in the Published Work section
+function animateArticle() {
+    drawFibonacciSpiralArticle();
+    angleArticle += 0.006;
+    requestAnimationFrame(animateArticle);
+}
+
+setupArticleCanvas();
+animateArticle();
+
+window.addEventListener("resize", function() {
+    resizeMainCanvas();
+    seedFloatingItems();
+    setupArticleCanvas();
+});
 
 
 /* main page */

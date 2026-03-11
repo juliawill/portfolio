@@ -1,16 +1,25 @@
 * {
     margin: 0;
     padding: 0;
-    font-family:'Roboto', monospace;
+    font-family: "Manrope", "Clear Sans", "Segoe UI", sans-serif;
     box-sizing: border-box;
     background: transparent;
   }
+
+  :root {
+    --bg-primary: #080d1a;
+    --bg-secondary: #121a33;
+    --surface: #1a2444;
+    --surface-strong: #24345e;
+    --text-primary: #eef2ff;
+    --accent: #7c8cff;
+    --accent-2: #33d1c6;
+  }
   
   body {
-    background: #1c1b1b;
-    /*background: linear-gradient(to bottom, #0a0a0a, #120416);*/
+    background: radial-gradient(circle at top, var(--bg-secondary) 0%, var(--bg-primary) 55%);
     background-attachment: fixed;
-    color: #fff;
+    color: var(--text-primary);
     min-height: 100vh;
   }
   
@@ -40,7 +49,7 @@
     left: 0;
     height: 8px; /* Bar height */
     /*background-color: #16ecb3; /* Bar color */
-    background: linear-gradient(to right, #16ecb3, #087dea);
+    background: linear-gradient(to right, var(--accent-2), var(--accent));
     width: 0%; /* Initial width */
     z-index: 10000;
     transition: width 0.1s ease; /* Smooth transition */
@@ -50,11 +59,12 @@
   position: fixed;
   bottom: 20px;
   right: 20px;
-  background: rgba(0, 0, 0, 0.7);
-  color: #16ecb3;
+  background: rgba(8, 13, 26, 0.85);
+  color: var(--accent-2);
   padding: 10px 20px;
   border-radius: 5px;
   font-size: 12px;
+  border: 1px solid rgba(124, 140, 255, 0.35);
 }
 
 #error-message {
@@ -75,14 +85,27 @@
   
 
   #fibonacciCanvas {
-    position: absolute;
+    position: fixed;
     color: rgb(167, 40, 40);
     top: 0;
     left: 0;
     width: 100%;
-    height: 100%;
-    z-index: -1; /* Ensure it stays in the background */
+    height: 100vh;
+    z-index: 0;
     pointer-events: none; /* Allow clicks to go through the canvas */
+  }
+
+  /* Keep animated canvas behind all site content */
+  #header,
+  #about,
+  #services,
+  #portfolio,
+  #Github,
+  #Articles,
+  #contact,
+  .copyright {
+    position: relative;
+    z-index: 1;
   }
   
   /* Navigation Bar at Top Center */
@@ -104,7 +127,7 @@
   }
   
   nav ul li a {
-    color: #fff;
+    color: var(--text-primary);
     text-decoration: none;
     font-size: 18px;
     position: relative;
@@ -115,7 +138,7 @@
     content: '';
     width: 0%;
     height: 3px;
-    background: white;
+    background: var(--accent-2);
     position: absolute;
     left: 0;
     bottom: -6px;
@@ -130,9 +153,9 @@
   .header-text {
     position: absolute;
     top: 49%;
-    left: 30.5%;
-    /*text-align: center;*/
-    transform: translateY(-50%);
+    left: 50%;
+    transform: translate(-50%, -50%);
+    text-align: center;
     font-size: 50px;
     z-index: 1;
   }
@@ -141,11 +164,11 @@
     font-size: 50px;
     margin-top: 25px;
     line-height: 1.5;
-    color: #fff;
+    color: var(--text-primary);
   }
   
   .header-text h1 span {
-    color: #16ecb3;;
+    color: var(--accent-2);
   }
   
   /* Logo on the Middle Right */
@@ -171,7 +194,7 @@
     }
     .header-text {
       text-align: center;
-      left: 65%;
+      left: 50%;
       transform: translate(-50%, -50%);
     }
     .logo {
@@ -208,21 +231,24 @@
   }
 
   .about-col-1 img {
-    height: 400px;
-    width: 500px;
-    border-radius: 15px;
+    height: min(42vw, 280px);
+    width: min(42vw, 280px);
+    border-radius: 50%;
+    padding: 10px;
+    background: #ffffff;
+    border: 3px solid #ffffff;
     margin-right: 50px;
     object-fit: cover;
-    transition: mask-image 0.3s ease; /* Smooth transition */
-    mask-image: radial-gradient(circle, rgba(0, 0, 0, 0) 50%, rgba(0, 0, 0, 1) 100%); /* Edge fading */
-    -webkit-mask-image: radial-gradient(circle, rgba(0, 0, 0, 1) 30%, rgba(0, 0, 0, 0) 100%); /* For Safari */
+    object-position: center;
+    transition: transform 0.25s ease, filter 0.25s ease;
+    filter: contrast(1.04) saturate(1.04);
+    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.25);
 }
 
 /* When the image is hovered, make it fully visible and without the fade effect */
 .about-col-1 img:hover {
-    mask-image: none; /* Remove the shadow, no fade on edges */
-    -webkit-mask-image: none; /* Ensure the image returns to its original brightness */
-    filter: brightness(1);
+    transform: scale(1.02);
+    filter: contrast(1.06) saturate(1.08);
 }
   
   
@@ -240,7 +266,7 @@
 .sub-title {
     font-size: 50px;
     font-weight: 600;
-    color: #fff;
+    color: var(--text-primary);
 }
 
 .tab-titles{
@@ -261,7 +287,7 @@
     content: " ";
     width: 0;
     height: 3px;
-    background: #16ecb3;
+    background: var(--accent);
     position: absolute;
     left: 0;
     bottom: -8px;
@@ -278,7 +304,7 @@
 }
 
 .tab-contents ul li span{
-    color: #fff;
+    color: var(--text-primary);
     font-size: 14px;
 }
 
@@ -309,7 +335,7 @@
 
 .services-list div {
     padding: 50px;
-    background: #262626;
+    background: rgba(26, 36, 68, 0.78);
     padding: 40px;
     font-size: 13px;
     font-weight: 300;
@@ -329,14 +355,14 @@
 
 .services-list div a {
    text-decoration: none;
-   color: #fff;
+   color: var(--text-primary);
    font-size: 12px;
    margin-top: 20px;
    display: inline-block;
 }
 
 .services-list div:hover {
-    background: #16ecb3;
+    background: linear-gradient(135deg, var(--surface-strong), var(--accent));
     transform: translateY(-10px);
 }
 
@@ -360,7 +386,7 @@
 .sub-title {
     font-size: 50px;
     font-weight: 600;
-    color: #fff;
+    color: var(--text-primary);
     margin-bottom: 20px; /* Adjust space between the header and images */
 }
 
@@ -402,7 +428,7 @@
 .layer {
   width: 100%;
   height: 0;
-  background: linear-gradient(rgba(0,0,0,0.6), #16ecb3);
+  background: linear-gradient(rgba(8, 13, 26, 0.55), var(--accent-2));
   position: absolute;
   border-radius: 10px;
   left: 0;
@@ -455,16 +481,17 @@
   display: block;
   margin: 50px auto;
   width: fit-content;
-  border: 1px solid #16ecb3;
+  border: 1px solid var(--accent-2);
   /*border: 1px solid #031913;*/
   padding: 14px 50px;
   border-radius: 6px;
   text-decoration: none;
-  color: white;
+  color: var(--text-primary);
 }
 
 .button:hover {
-  background: #16ecb3;
+  background: var(--accent-2);
+  color: #0b1228;
 
 }
 
@@ -522,7 +549,7 @@
 }
 
 .contact-left p i {
-  color: #16ecb3;
+  color: var(--accent-2);
   margin-right: 15px;
   font-size: 25 px;
 
@@ -544,7 +571,7 @@
 }
 
 .social-icons a:hover {
-  color:#16ecb3;
+  color: var(--accent-2);
   transform: translateY(-5px);
 
 
@@ -552,7 +579,7 @@
 
 .button.button {
   display: inline-block;
-  background: #16ecb3;
+  background: var(--accent);
 }
 
 .contact-right form {
@@ -564,10 +591,10 @@ form input, form textarea {
   width: 100%;
   border: 0;
   outline: none;
-  background: #262626;
+  background: rgba(26, 36, 68, 0.72);
   padding: 15px;
   margin: 15px 0;
-  color: #fff;
+  color: var(--text-primary);
   font-size: 18px;
   border-radius: 6px;
 
@@ -589,7 +616,7 @@ form button2{
 }
 
 .copyright i {
-  color: #16ecb3;
+  color: var(--accent-2);
 
 }
 
@@ -625,10 +652,10 @@ nav .fas{
       position: absolute;
       top: 50%;  /* Vertically center the text */
       left: 50%;  /* Horizontally center the text */
-      /*transform: translate(-50%, -50%);  /* Adjust for exact centering */
+      transform: translate(-50%, -50%);  /* Keep title centered on mobile */
       font-size: 16px;
       text-align: center;  /* Ensure the text is centered */
-      color: white; /* Ensure the text is visible */
+      color: var(--text-primary); /* Ensure the text is visible */
       
     }
 
@@ -648,10 +675,10 @@ nav .fas{
     display: block;
     font-size: 25px;
     cursor: pointer;
-    color: white;
+    color: var(--text-primary);
   }
   nav ul.active {
-    background: #16ecb3;
+    background: var(--surface-strong);
     /*
     position: absolute;
     top: 0;
@@ -668,7 +695,7 @@ nav .fas{
         right: 0;
         width: 250px;
         height: 100vh;
-        background: #16ecb3;
+        background: var(--surface-strong);
         padding-top: 50px;
         z-index: 1000;
         transition: right 0.3s ease;
@@ -749,7 +776,7 @@ nav .fas{
 .sub-title {
   font-size: 50px;
   font-weight: 600;
-  color: #fff;
+  color: var(--text-primary);
   margin-bottom: 20px; /* Adjust space between the header and images */
 
 }
@@ -760,6 +787,9 @@ nav .fas{
   gap: 40px;
   margin-top: 50px;
   display: flex;
+  position: static;
+  align-items: center;
+  justify-content: space-between;
 }
 
 .article {
@@ -768,18 +798,45 @@ nav .fas{
   overflow: hidden;
   justify-content: center;
   align-items: center;
+  z-index: 2;
 
 }
 .fibonacci-spiral-container {
-  width: 60%; /* Adjust the width to fit the layout */
-  height: 500px; /* Set a height for the canvas */
-  display: inline-block; /* Align the canvas next to the article */
-  vertical-align: right; /* Align to the top */
+  width: min(100%, 620px);
+  height: clamp(360px, 48vw, 520px);
+  display: inline-block;
+  position: relative;
+  right: auto;
+  top: auto;
+  transform: none;
+  z-index: 1;
+  pointer-events: none;
+  opacity: 0.78;
+  flex-shrink: 0;
 }
 
 #fibonacciCanvasArticle {
   width: 100%;
   height: 100%;
+  display: block;
+  border-radius: 0;
+  mix-blend-mode: screen;
+}
+
+@media (max-width: 980px) {
+  .article-list {
+    flex-direction: column;
+    justify-content: flex-start;
+  }
+
+  .fibonacci-spiral-container {
+    position: relative;
+    right: auto;
+    top: auto;
+    transform: none;
+    width: 100%;
+    opacity: 0.92;
+  }
 }
 
 
@@ -801,7 +858,7 @@ nav .fas{
 .layer {
   width: 100%;
   height: 0;
-  background: linear-gradient(rgba(0,0,0,0.6), #ffffff);
+  background: linear-gradient(rgba(8, 13, 26, 0.55), var(--accent));
   position: absolute;
   border-radius: 10px;
   left: 0;
@@ -830,7 +887,7 @@ nav .fas{
 /*links*/
 .layer a{
   margin-top: 20px;
-  color: #16ecb3;
+  color: var(--accent);
   text-decoration: none;
   font-size: 18px;
   line-height: 60px;
@@ -856,3 +913,44 @@ nav .fas{
 
 
 
+
+/* Keep hero text centered on all viewport sizes */
+#header .header-text {
+  position: absolute !important;
+  top: 50% !important;
+  left: 50% !important;
+  transform: translate(-50%, -50%) !important;
+  width: min(100%, 980px);
+  padding: 0 16px;
+  text-align: center !important;
+}
+
+#header .header-text p {
+  margin: 0 auto;
+  text-align: center !important;
+  font-size: clamp(1.75rem, 6vw, 3.125rem);
+  line-height: 1.25;
+  letter-spacing: 0.03em;
+  font-weight: 700;
+  color: #7ee7dc;
+}
+
+#header .header-text h1 {
+  margin: 12px auto 0;
+  text-align: center !important;
+  font-size: clamp(1.75rem, 6vw, 3.125rem);
+  line-height: 1.25;
+  font-weight: 700;
+}
+
+#header .header-text .code-hero {
+  font-family: "DM Mono", "SFMono-Regular", Menlo, Consolas, monospace;
+  letter-spacing: -0.01em;
+  color: #c7d2fe;
+}
+
+#typing-text {
+  color: #7c8cff;
+  font-family: "Manrope", "Clear Sans", "Segoe UI", sans-serif;
+  font-weight: 800;
+}
